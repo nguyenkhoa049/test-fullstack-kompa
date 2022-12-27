@@ -1,4 +1,4 @@
-import { merge } from "lodash"
-import userInfoResolvers from "./userInfoResolvers"
+import { merge } from "lodash";
+import { userResolver } from "./user.resolver";
 
-export const resolvers =  merge(userInfoResolvers)
+export const resolvers = merge(userResolver)
