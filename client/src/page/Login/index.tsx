@@ -70,9 +70,8 @@ const LoginPage: FC = () => {
                         <Button variant="outlined" sx={{
                             width: '100%',
                             fontWeight: 'bold',
-                           
                         }}>
-                            Đăng nhập
+                            Log in
                         </Button>
                     </Box>
                 </Link>
