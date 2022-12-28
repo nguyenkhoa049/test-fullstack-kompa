@@ -14,7 +14,7 @@ const userStyle = makeStyles(() => ({
             '& .toolBar':{
                 paddingRight: '10px', display: 'flex',
                 alignItems: 'center', fontSize: '13px',
-                width: '10%', justifyContent: 'space-between',
+                width: '170px', justifyContent: 'space-between',
                 '& .btnLogout':{
                     fontWeight: 'bold',
                     border: 'none',
