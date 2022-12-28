@@ -5,10 +5,11 @@ import Button from "@mui/material/Button";
 import Input from "@mui/material/Input";
 import { InputLabel } from "@mui/material";
 import Logo from '../../assets/images/logo.png';
+import { Link } from "react-router-dom";
 
 
 const LoginPage: FC = () => {
-    
+
 
     return (
         <Grid container sx={{
@@ -50,25 +51,33 @@ const LoginPage: FC = () => {
                             '&::after': {
                                 borderBottom: 'unset'
                             },
+
                             '&::before': {
                                 borderBottom: 'unset'
                             }
 
                         }} />
                 </Box>
-                <Box component="div" sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    marginTop: '5px'
-                }}>
-                    <Button variant="outlined" sx={{
-                        width: '100%',
-                        fontWeight: 'bold'
-                    }}>
-                        Đăng nhập
-                    </Button>
 
-                </Box>
+                <Link to="/user" style={{
+                     textDecoration:'none'
+                }}>
+                    <Box component="div" sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        marginTop: '5px'
+                    }}>
+                        <Button variant="outlined" sx={{
+                            width: '100%',
+                            fontWeight: 'bold',
+                           
+                        }}>
+                            Đăng nhập
+                        </Button>
+                    </Box>
+                </Link>
+
+
             </Grid>
         </Grid>
     );
