@@ -9,8 +9,8 @@ export const userSchema = buildSchema(`
   }
 
   type Query {
-    users: [User]
-    user (id: ID!): User
+    getUsers: [User]
+    getUser (id: ID!): User
   }
 
   type Mutation {

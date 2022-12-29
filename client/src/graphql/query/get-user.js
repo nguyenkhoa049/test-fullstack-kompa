@@ -1,12 +1,12 @@
 import { gql } from '@apollo/client';
 
-const GET_USER = gql`
-  query GetLocations {
-    locations {
-      id
+export const GET_USER = gql`
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
       name
-      description
-      photo
+      password
+      username
+      id
     }
   }
 `;

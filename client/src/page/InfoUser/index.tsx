@@ -4,8 +4,14 @@ import Logo from '../../assets/images/logo.png';
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 import userStyle from "./style";
+import { useQuery } from '@apollo/client';
+import { GET_USER } from "../../graphql/query/get-user";
 
 const InfoUser = () => {
+    const { loading, error, data } = useQuery(GET_USER, {
+        variables: { id: '63aaba2200d92b803b05e00d' },
+    });
+    
     const classes = userStyle();
     const basicClass = clsx(classes.root);
     return (

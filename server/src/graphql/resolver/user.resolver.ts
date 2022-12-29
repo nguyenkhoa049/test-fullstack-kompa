@@ -3,8 +3,8 @@ import { findAllUsers, findUserById } from "../../services/users.service";
 
 export const userResolver = {
     Query: {
-        users: async () => await findAllUsers(),
-        user: async (id: string) => await findUserById(id),
+        getUsers: async () => await findAllUsers(),
+        getUser: async (parent: any, { id }: any) => await findUserById(id),
     },
 
     Mutation: {
