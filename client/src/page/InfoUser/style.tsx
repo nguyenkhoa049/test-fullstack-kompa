@@ -43,13 +43,17 @@ const userStyle = makeStyles(() => ({
                 borderStyle: 'solid',
                 borderColor: 'rgb(232, 237, 235)',
                 padding: '24px',
+                '& .info':{
+                    marginTop:'15px',
+                    marginBottom:'5px',
+                },
                 '& .title':{
                     width: '100%',
+                    paddingBottom:'4px'
                 },
                 '& .MuiInput-root, & .MuiSelect-select, & .MuiInputBase-root': {
                     display: 'flex',
                     width: '100%' ,
-                    
                     '& input': {
                         fontSize: '14px',
                         borderRadius: '6px',
@@ -75,21 +79,15 @@ const userStyle = makeStyles(() => ({
                     },
                 },
 
-                '& .MuiFormLabel-asterisk': {
-                    color: 'var(--mscb-danger)'
-                },
                 '& .MuiInputBase-root': {
                     padding: '0!important',
-                    borderRadius: 0,
-                    backgroundColor: 'var(--secondary)'
+                    borderRadius: '5px',
+                    border:' solid 1px',
                 },
                 '& .MuiAutocomplete-inputRoot': {
                     '& .MuiOutlinedInput-input': {
                         paddingRight: '50px !important',
                     }
-                },
-                '& fieldset': {
-                    border: 'none'
                 },
                 '& .Mui-disabled': {
                     color: 'rgb(136, 147, 151)',

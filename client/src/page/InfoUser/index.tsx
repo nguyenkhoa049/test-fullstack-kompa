@@ -36,7 +36,7 @@ const InfoUser = () => {
             <Box className="infoUser">
                 <Box className="details">
                     <Box> Profile</Box>
-                    <Box>
+                    <Box className="info">
                         <Box className="title">
                             <label >
                                 Họ và tên
@@ -44,7 +44,7 @@ const InfoUser = () => {
                         </Box>
                         <Input disabled ></Input>
                     </Box>
-                    <Box>
+                    <Box className="info">
                         <Box className="title">
                             <label >
                                 Giới tính
@@ -52,7 +52,7 @@ const InfoUser = () => {
                         </Box>
                         <Input disabled ></Input>
                     </Box>
-                    <Box>
+                    <Box className="info">
                         <Box className="title">
                             <label >
                                 Số điện thoại
@@ -60,7 +60,7 @@ const InfoUser = () => {
                         </Box>
                         <Input disabled ></Input>
                     </Box>
-                    <Box>
+                    <Box className="info">
                         <Box className="title">
                             <label >
                                Email
@@ -68,7 +68,7 @@ const InfoUser = () => {
                         </Box>
                         <Input disabled ></Input>
                     </Box>
-                    <Box>
+                    <Box className="info">
                         <Box className="title">
                             <label >
                                 Địa chỉ
@@ -76,7 +76,7 @@ const InfoUser = () => {
                         </Box>
                         <Input disabled ></Input>
                     </Box>
-                    <Box>
+                    <Box className="info">
                         <Box className="title">
                             <label >
                                 Phòng Ban
