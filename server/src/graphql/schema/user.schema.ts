@@ -6,14 +6,54 @@ export const userSchema = buildSchema(`
     name: String
     username: String
     password: String
+    sex: Boolean
+    email: String
+    phone: String
+    address: String
+    department: String
+  }
+
+  type ResponseLogin {
+    message: String!
+    accessToken: String
+    success: Boolean
+  }
+
+  type UserCreated {
+    id: ID
+    name: String
+    username: String
+    sex: Boolean
+    email: String
+    phone: String
+    address: String
+    department: String
+  }
+
+  type ResponseCreate {
+    message: String!
+    data: UserCreated
   }
 
   type Query {
-    getUsers: [User]
-    getUser (id: ID!): User
+    users: [User]
+    currentUser: User
   }
 
   type Mutation {
-    createUser(name: String, username: String, password: String): User
+    createUser(
+      name: String, 
+      username: String, 
+      password: String,  
+      sex: Boolean,
+      email: String,
+      phone: String,
+      address: String,
+      department: String
+    ): ResponseCreate
+    loginUser(
+      username: String, 
+      password: String,
+    ): ResponseLogin
   }
 `);

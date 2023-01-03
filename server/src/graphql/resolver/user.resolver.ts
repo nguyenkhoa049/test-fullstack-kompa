@@ -1,13 +1,14 @@
-import { createUser } from './../../services/users.service';
+import { createUser, loginUser } from './../../services/users.service';
 import { findAllUsers, findUserById } from "../../services/users.service";
 
 export const userResolver = {
     Query: {
-        getUsers: async () => await findAllUsers(),
-        getUser: async (parent: any, { id }: any) => await findUserById(id),
+        users: async () => await findAllUsers(),
+        currentUser: async (parent: any, args: any, { id }) => await findUserById(id),
     },
 
     Mutation: {
         createUser: async (parent: any, args: any) => await createUser(args),
+        loginUser: async (parent: any, args: any) => await loginUser(args),
     }
 };

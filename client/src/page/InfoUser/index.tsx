@@ -1,19 +1,31 @@
 import { Box, Button, IconButton, Input,  } from "@mui/material";
 import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 import Logo from '../../assets/images/logo.png';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import userStyle from "./style";
 import { useQuery } from '@apollo/client';
-import { GET_USER } from "../../graphql/query/get-user";
+import { GET_CURRENT_USER } from "../../graphql/query/get-user";
+import Cookies from 'js-cookie'
+import { useEffect } from "react";
 
 const InfoUser = () => {
-    const { loading, error, data } = useQuery(GET_USER, {
-        variables: { id: '63aaba2200d92b803b05e00d' },
-    });
+    const {  data } = useQuery(GET_CURRENT_USER);
     
     const classes = userStyle();
     const basicClass = clsx(classes.root);
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if(data && !data.currentUser){
+            navigate('/')
+        }
+    },[data])
+
+    const onLogout = ()=>{
+        Cookies.remove('accessToken', { path: '' }) 
+    }
+
     return (
         <Box  className={basicClass} >
             <Box component='div' className="sibar">
@@ -21,14 +33,14 @@ const InfoUser = () => {
                     <img src={Logo} alt='Kompa Group' className="imageLogo"/>
                 </Box>
                 <Box component='div' className="toolBar">
-                    <label>Hi, Khoa</label>
+                    <label>Hi, {data?.currentUser?.name ?? ''}</label>
                     <IconButton>
                         <CircleNotificationsIcon sx={{ color: '#b6b9dccc' }} />
                     </IconButton>
-                    <Link to="/login" style={{
+                    <Link to="/" style={{
                         textDecoration: 'none',
                     }}>
-                        <Box component="div" sx={{
+                        <Box onClick={onLogout} component="div" sx={{
                             display: 'flex',
                             justifyContent: 'flex-end',
                         }}>
@@ -48,7 +60,7 @@ const InfoUser = () => {
                                 Họ và tên
                             </label>
                         </Box>
-                        <Input disabled ></Input>
+                        <Input value={data?.currentUser?.name ?? ''} disabled ></Input>
                     </Box>
                     <Box className="info">
                         <Box className="title">
@@ -56,7 +68,7 @@ const InfoUser = () => {
                                 Giới tính
                             </label>
                         </Box>
-                        <Input disabled ></Input>
+                        <Input value={data?.currentUser?.sex === true ? 'Nam' :'Nữ' ?? ''} disabled ></Input>
                     </Box>
                     <Box className="info">
                         <Box className="title">
@@ -64,7 +76,7 @@ const InfoUser = () => {
                                 Số điện thoại
                             </label>
                         </Box>
-                        <Input disabled ></Input>
+                        <Input value={data?.currentUser?.phone ?? ''} disabled ></Input>
                     </Box>
                     <Box className="info">
                         <Box className="title">
@@ -72,7 +84,7 @@ const InfoUser = () => {
                                Email
                             </label>
                         </Box>
-                        <Input disabled ></Input>
+                        <Input value={data?.currentUser?.email ?? ''} disabled ></Input>
                     </Box>
                     <Box className="info">
                         <Box className="title">
@@ -80,7 +92,7 @@ const InfoUser = () => {
                                 Địa chỉ
                             </label>
                         </Box>
-                        <Input disabled ></Input>
+                        <Input value={data?.currentUser?.address ?? ''}  disabled ></Input>
                     </Box>
                     <Box className="info">
                         <Box className="title">
@@ -88,7 +100,7 @@ const InfoUser = () => {
                                 Phòng Ban
                             </label>
                         </Box>
-                        <Input disabled ></Input>
+                        <Input value={data?.currentUser?.department ?? ''} disabled ></Input>
                     </Box>
                 </Box>
             </Box>

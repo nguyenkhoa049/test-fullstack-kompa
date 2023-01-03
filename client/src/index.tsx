@@ -6,11 +6,30 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { router } from './routes';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import Cookies from 'js-cookie'
+import { setContext } from '@apollo/client/link/context';
+
+const link = createHttpLink({
+  uri: process.env.REACT_APP_API,
+  credentials: 'same-origin'
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = Cookies.get('accessToken')
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    }
+  }
+});
 
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_API,
   cache: new InMemoryCache(),
+  link: authLink.concat(link)
 });
 
 const root = ReactDOM.createRoot(

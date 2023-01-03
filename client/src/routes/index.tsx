@@ -7,12 +7,9 @@ import LoginPage from "../page/Login";
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <div>Hello world!</div>,
-    },
-    {
-        path: "/login",
         element: <LoginPage />
     },
+
     {
         path: "/user",
         element: <InfoUser />

@@ -12,9 +12,12 @@ const userStyle = makeStyles(() => ({
                 height: '50px' 
             },
             '& .toolBar':{
-                paddingRight: '10px', display: 'flex',
-                alignItems: 'center', fontSize: '13px',
-                width: '170px', justifyContent: 'space-between',
+                paddingRight: '10px', 
+                display: 'flex',
+                alignItems: 'center', 
+                fontSize: '13px',
+                width: '30%', 
+                justifyContent: 'flex-end',
                 '& .btnLogout':{
                     fontWeight: 'bold',
                     border: 'none',
@@ -54,6 +57,7 @@ const userStyle = makeStyles(() => ({
                 '& .MuiInput-root, & .MuiSelect-select, & .MuiInputBase-root': {
                     display: 'flex',
                     width: '100%' ,
+                    fontWeight: 'bold',
                     '& input': {
                         fontSize: '14px',
                         borderRadius: '6px',
@@ -80,7 +84,7 @@ const userStyle = makeStyles(() => ({
                 },
 
                 '& .MuiInputBase-root': {
-                    padding: '0!important',
+                    paddingLeft: '10px',
                     borderRadius: '5px',
                     border:' solid 1px',
                 },
@@ -93,6 +97,7 @@ const userStyle = makeStyles(() => ({
                     color: 'rgb(136, 147, 151)',
                     backgroundColor: 'rgb(232, 237, 235)',
                     borderColor: 'rgb(193, 199, 198)',
+                    webkitTextFillColor: 'rgb(0 0 0 / 56%)'
                 }
             }
         }
