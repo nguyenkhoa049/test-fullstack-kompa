@@ -11,7 +11,6 @@ import { useEffect } from "react";
 
 const InfoUser = () => {
     const {  data, refetch, loading} = useQuery(GET_CURRENT_USER);
-    console.log("loading", loading);
     
     const classes = userStyle();
     const basicClass = clsx(classes.root);
@@ -61,7 +60,7 @@ const InfoUser = () => {
             </Box>
             <Box className="infoUser">
                 <Box className="details">
-                    <Box> Profile</Box>
+                    <Box sx={{ fontSize:'20px'}}> Profile</Box>
                     <Box className="info">
                         <Box className="title">
                             <label >
