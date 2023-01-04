@@ -15,10 +15,14 @@ async function startApolloServer() {
 
     const { url } = await startStandaloneServer(server, {
         context: async ({ req }) => {
-            const token = req.headers.authorization.split(' ')[1] || '';
-            if(token) {
-                const decoded = jwt.verify(token, process.env.SALT_HASH_PASSWORD) as jwt.JwtPayload
-                return { id: decoded.id }
+            const token = req.headers.authorization ? req.headers.authorization.split(' ')[1] : '';
+            if (token) {
+                try {
+                    const decoded = jwt.verify(token, process.env.SALT_HASH_PASSWORD) as jwt.JwtPayload
+                    return { id: decoded.id }
+                } catch (err) {
+                    return { id: '' }
+                }
             }
         },
         listen: { port },

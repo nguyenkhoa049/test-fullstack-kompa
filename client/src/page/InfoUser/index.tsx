@@ -10,17 +10,30 @@ import Cookies from 'js-cookie'
 import { useEffect } from "react";
 
 const InfoUser = () => {
-    const {  data } = useQuery(GET_CURRENT_USER);
+    const {  data, refetch, loading} = useQuery(GET_CURRENT_USER);
+    console.log("loading", loading);
     
     const classes = userStyle();
     const basicClass = clsx(classes.root);
     const navigate = useNavigate()
 
     useEffect(()=>{
+        refetch()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+
+    useEffect(()=>{
         if(data && !data.currentUser){
             navigate('/')
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[data])
+
+    useEffect(()=>{
+        if(data && !data.currentUser){
+            navigate('/')
+        }
+    },[data, navigate])
 
     const onLogout = ()=>{
         Cookies.remove('accessToken', { path: '' }) 
