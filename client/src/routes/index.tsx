@@ -6,12 +6,12 @@ import LoginPage from "../page/Login";
 
 export const router = createBrowserRouter([
     {
-        path: "/",
+        path: "/login",
         element: <LoginPage />
     },
 
     {
-        path: "/user",
+        path: "/",
         element: <InfoUser />
     }
 

@@ -24,19 +24,14 @@ const InfoUser = () => {
 
     useEffect(()=>{
         if(data && !data.currentUser){
-            navigate('/')
+            navigate('/login')
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[data])
 
-    useEffect(()=>{
-        if(data && !data.currentUser){
-            navigate('/')
-        }
-    },[data, navigate])
-
     const onLogout = ()=>{
-        Cookies.remove('accessToken', { path: '' }) 
+        Cookies.remove('accessToken') 
+        refetch()
     }
 
     return (

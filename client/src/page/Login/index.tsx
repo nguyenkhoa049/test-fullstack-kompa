@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
@@ -7,10 +7,13 @@ import { InputLabel } from "@mui/material";
 import Logo from '../../assets/images/logo.png';
 import { useNavigate } from "react-router-dom";
 import { LOGIN_USER } from "../../graphql/query/login";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
+import { GET_CURRENT_USER } from "../../graphql/query/get-user";
 
 
 const LoginPage: FC = () => {
+
+    const {  data} = useQuery(GET_CURRENT_USER);
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -22,11 +25,18 @@ const LoginPage: FC = () => {
         const res = await login({ variables: { username, password } })
         if (res.data.loginUser.success) {
             document.cookie = `accessToken=${res.data.loginUser.accessToken}`;
-            navigate('/user')
+            navigate('/')
         } else {
             if (res.data?.loginUser.message) setError(res.data.loginUser.message)
         }
     }
+
+    useEffect(()=>{
+        if(data && data.currentUser){
+            navigate('/')
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[data])
 
     return (
         <Grid container sx={{
